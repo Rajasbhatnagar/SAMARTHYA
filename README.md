@@ -1,39 +1,37 @@
-# SAMARTHYA
+# SAMARTHYA  
+**SAR-based Maritime Analytics for Recognition, Tracking, and Heading Yield Assessment**
 
-**SAMARTHYA**: *SAR-based Maritime Analytics for Recognition, Tracking, and Heading Yield Assessment*  
-An end-to-end deep learning pipeline for automated vessel wake detection and heading estimation in Synthetic Aperture Radar (SAR) imagery.
-
----
+SAMARTHYA is a modular deep learning pipeline for detecting vessel wakes and estimating heading angles from Synthetic Aperture Radar (SAR) imagery. Built for maritime situational awareness, the system combines object detection, binary classification, and hybrid regression to support surveillance, reconnaissance, and autonomous monitoring applications.
 
 ## Overview
 
-SAMARTHYA is designed to process SAR images to detect vessel wakes, classify their validity, and estimate vessel heading using a combination of visual and geometric features. The pipeline is built for enhancing maritime situational awareness and is adaptable for integration into UAV, satellite, or coastal surveillance systems.
+This project processes SAR images to:
+- Detect wake signatures using YOLOv11
+- Filter out false detections using ResNet18
+- Estimate vessel heading using a hybrid ResNet34 + MLP model
 
----
+The system is fully automated and trained on both real and synthetic SAR wake datasets, requiring no manual labeling. Outputs include bounding boxes and precise heading angles suitable for real-time or batch inference systems.
 
-## Dataset
+## Datasets
 
-This project uses two primary data sources:
+SAMARTHYA was trained and evaluated using two sources:
 
-### 1. OpenSAR Wake Dataset
-- Publicly available dataset containing SAR images with visible vessel wakes.
-- Source: [OpenSAR Project – Wake Data](http://opensar.sjtu.edu.cn/)
-- Direct Link: [Download Wake Dataset](http://opensar.sjtu.edu.cn/data/wake.zip)
+### 1. [OpenSAR Wake Dataset](https://drive.google.com/file/d/14VkPYnb1BsmOvw_JTwtVFM-_qVpc4Udu/view)
+- Public SAR wake dataset
+- Contains labeled SAR images with visible vessel wake patterns
 
 ### 2. Synthetic SAR Wake Dataset (SynthSAR)
-- Custom-generated wake images covering a full range of headings (0°–360°).
-- Includes simulated SAR texture, noise, and wake geometry.
-- Metadata includes ground truth heading in both degrees and (sin, cos) format.
+- Procedurally generated SAR wake imagery
+- Simulates vessel wakes across 0°–360° headings
+- Includes metadata with heading ground truth (degrees and sin/cos)
 
-No manual annotations were used; all labels were generated using procedural logic and automated heading generation.
+All annotations were generated automatically using script-based logic.
 
----
-
-## Installation
+## Setup
 
 ```bash
 git clone https://github.com/yourusername/SAMARTHYA.git
 cd SAMARTHYA
 python3 -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate.bat on Windows
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
