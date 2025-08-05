@@ -1,0 +1,8 @@
+train: C:/Users/rajas/OneDrive/Desktop/drdo_enemy_vessel/OpenSARWake_1.0/train/images
+val: C:/Users/rajas/OneDrive/Desktop/drdo_enemy_vessel/OpenSARWake_1.0/val/images
+test: C:/Users/rajas/OneDrive/Desktop/drdo_enemy_vessel/OpenSARWake_1.0/test/images
+
+nc: 2
+names:
+  0: wake_type_0
+  1: wake_type_2
